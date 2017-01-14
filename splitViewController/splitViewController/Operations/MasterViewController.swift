@@ -98,9 +98,9 @@ class MasterViewController: UITableViewController {
     func askProviderForRow(_ rowNumber: CLong) {
         APIClient.client.requestDataForRow(rowNumber) { result in
             // 3. When new data arrives, reload table view and detail
-             self.tableView.reloadData()
             switch result {
             case .success(let model):
+                self.tableView.reloadData()
                 self.detailReload(rowNumber: rowNumber, image: model.image, text: model.text, switchValue: model.switchValue, switchEnabled: model.switchEnabled)
             case .failure( _):
                 break
